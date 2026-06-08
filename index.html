@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiks 🌸</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
+    overflow:hidden;
+    position:relative;
+}
+
+/* Main Card */
+.card{
+    background:white;
+    width:90%;
+    max-width:650px;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+    z-index:10;
+}
+
+h1{
+    color:#ff5c8a;
+    margin-bottom:15px;
+}
+
+p{
+    color:#555;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+.quote{
+    font-style:italic;
+    color:#777;
+}
+
+.message-box{
+    margin-top:20px;
+    min-height:70px;
+    padding:15px;
+    border-radius:15px;
+    background:#fff4f8;
+    color:#555;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.final-message{
+    display:none;
+    margin-top:20px;
+    color:#ff5c8a;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+/* Flowers */
+.flower{
+    position:absolute;
+    font-size:38px;
+    cursor:pointer;
+    user-select:none;
+    transition:0.3s;
+    animation:float 3s ease-in-out infinite alternate;
+}
+
+.flower:hover{
+    transform:scale(1.2);
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0px);
+    }
+    to{
+        transform:translateY(-10px);
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Flowers Around The Page -->
+<div class="flower" style="top:10%;left:10%;" onclick="showMessage(this,0)">🌸</div>
+<div class="flower" style="top:15%;right:10%;" onclick="showMessage(this,1)">🌸</div>
+<div class="flower" style="top:75%;left:8%;" onclick="showMessage(this,2)">🌸</div>
+<div class="flower" style="top:80%;right:10%;" onclick="showMessage(this,3)">🌸</div>
+<div class="flower" style="top:25%;left:5%;" onclick="showMessage(this,4)">🌸</div>
+<div class="flower" style="top:25%;right:5%;" onclick="showMessage(this,5)">🌸</div>
+<div class="flower" style="top:25%;left:15%;" onclick="showMessage(this,6)">🌸</div>
+<div class="flower" style="top:15%;right:2%;" onclick="showMessage(this,7)">🌸</div>
+<div class="flower" style="top:70%;right:5%;" onclick="showMessage(this,8)">🌸</div>
+<div class="flower" style="top:80%;left:16%;" onclick="showMessage(this,9)">🌸</div>
+<div class="flower" style="top:85%;left:5%;" onclick="showMessage(this,10)">🌸</div>
+<div class="flower" style="top:85%;right:5%;" onclick="showMessage(this,11)">🌸</div>
+<!-- Main Card -->
+<div class="card">
+
+    <h1>🌸 A Little Reminder 🌸</h1>
+
+    <p>
+        No matter how difficult today feels, remember that your strength,
+        kindness, and determination have carried you through every challenge
+        you've faced so far.
+    </p>
+
+    <p class="quote">
+        "The flower that blooms through adversity is often the most beautiful."
+    </p>
+
+    <div class="message-box" id="messageBox">
+        Click one of the flowers around the page whenever you need encouragement. 💕
+    </div>
+
+    <div class="final-message" id="finalMessage">
+        🌸 See? Just like these flowers, you're growing even when you don't always notice it.
+        Keep believing in yourself—you are capable of amazing things. ❤️
+    </div>
+
+</div>
+
+<script>
+const messages = [
+    "Your hard work today is creating opportunities for tomorrow. 🌸",
+    "You are stronger than the challenges standing in front of you. 💪💕",
+    "Every small step forward still counts as progress. 🌷",
+    "Be Proud of yourself for how far you've come 🌺",
+    "Don't forget how much you've already overcome. 🌼",
+    "You have gifts, talents, and strengths that make you uniquely valuable. ✨",
+	"You are loved and appreciated. ❤️ ",
+	"You are doing better than you think. 💖",
+	"Keep believing in yourself. 🌺",
+	"There is strength inside you even on the hard days. 💖",
+	"Keep shining in your own unique way. ✨",
+	"Even difficult seasons eventually bloom into something beautiful. 🌸",
+];
+
+let clickedFlowers = 0;
+
+function showMessage(flower, index){
+
+    document.getElementById("messageBox").innerHTML = messages[index];
+
+    if(!flower.classList.contains("clicked")){
+        flower.classList.add("clicked");
+        flower.style.opacity = "0.2";
+        flower.style.pointerEvents = "none";
+
+        clickedFlowers++;
+
+        if(clickedFlowers === 12){
+            document.getElementById("finalMessage").style.display = "block";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
