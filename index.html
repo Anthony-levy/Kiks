@@ -26,24 +26,27 @@ body{
 /* Main Card */
 .card{
     background:white;
-    width:90%;
-    max-width:650px;
-    padding:40px;
+    width:min(92vw, 650px);
+    max-height:85vh;
+    padding:clamp(20px, 4vw, 40px);
     border-radius:25px;
     text-align:center;
     box-shadow:0 15px 35px rgba(0,0,0,0.15);
     z-index:10;
+    overflow-y:auto;
 }
 
 h1{
     color:#ff5c8a;
     margin-bottom:15px;
+    font-size:clamp(1.8rem, 5vw, 3rem);
 }
 
 p{
     color:#555;
-    line-height:1.8;
+    line-height:1.7;
     margin-bottom:18px;
+    font-size:clamp(0.95rem, 2.5vw, 1.1rem);
 }
 
 .quote{
@@ -73,11 +76,12 @@ p{
 /* Flowers */
 .flower{
     position:absolute;
-    font-size:38px;
+    font-size:clamp(24px, 4vw, 38px);
     cursor:pointer;
     user-select:none;
     transition:0.3s;
     animation:float 3s ease-in-out infinite alternate;
+    z-index:1;
 }
 
 .flower:hover{
@@ -90,6 +94,30 @@ p{
     }
     to{
         transform:translateY(-10px);
+    }
+}
+
+	@media (max-width: 768px){
+
+    body{
+        padding:10px;
+    }
+
+    .card{
+        width:95vw;
+        max-height:80vh;
+    }
+
+    .message-box{
+        font-size:0.95rem;
+    }
+
+    .final-message{
+        font-size:0.95rem;
+    }
+
+    .flower{
+        font-size:28px;
     }
 }
 </style>
